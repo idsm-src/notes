@@ -1,0 +1,250 @@
+# PubChemRDF vocabulary
+# https://pubchemdocs.ncbi.nlm.nih.gov/rdf
+https://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary.owl
+
+# ChEBI Ontology
+# https://www.ebi.ac.uk/chebi/
+ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl
+
+# Medical Subject Headings (MESH)
+# https://id.nlm.nih.gov/mesh/
+ftp://ftp.nlm.nih.gov/online/mesh/rdf/mesh.nt
+ftp://ftp.nlm.nih.gov/online/mesh/rdf/vocabulary_1.0.0.ttl
+
+# BioAssay Ontology (BAO)
+# http://bioassayontology.org/bioassayontology/
+http://www.bioassayontology.org/bao/bao_complete.owl
+http://www.bioassayontology.org/bao/bao_core.owl
+http://www.bioassayontology.org/bao/bao_module_vocabularies.owl
+http://www.bioassayontology.org/bao/bao_module_biology.owl
+http://www.bioassayontology.org/bao/bao_module_properties.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_assay.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_assaykit.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_computational.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_detection.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_format.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_instrument.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_materialentity.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_method.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_organization.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_people.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_phenotype.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_quality.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_result.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_role.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_screenedentity.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_software.owl
+http://www.bioassayontology.org/bao/bao_vocabulary_unit.owl
+http://www.bioassayontology.org/bao/bao_external.owl
+
+# Protein Ontology (PRO)
+# https://proconsortium.org/
+http://purl.obolibrary.org/obo/pr.owl
+
+# Gene Ontology (GO)
+# http://geneontology.org/
+http://purl.obolibrary.org/obo/go.owl
+http://www.geneontology.org/formats/oboInOwl.owl
+
+# Sequence Ontology
+# https://github.com/The-Sequence-Ontology/SO-Ontologies
+http://purl.obolibrary.org/obo/so.owl
+
+# Biological Pathway Exchange (BioPAX)
+# http://www.biopax.org/
+http://www.biopax.org/release/biopax-level3.owl
+
+# Cell Line Ontology (CLO)
+# http://www.clo-ontology.org/
+https://raw.githubusercontent.com/CLO-ontology/CLO/master/src/ontology/clo.owl
+
+# Cell Ontology
+# http://obofoundry.org/ontology/cl.html
+http://purl.obolibrary.org/obo/cl.owl
+
+# Disease Ontology (DO)
+# https://disease-ontology.org/
+http://purl.obolibrary.org/obo/doid.owl
+
+# Symptom Ontology
+# https://github.com/DiseaseOntology/SymptomOntology
+http://purl.obolibrary.org/obo/symp.owl
+
+# Pathogen Transmission Ontology
+# https://github.com/DiseaseOntology/PathogenTransmissionOntology
+http://purl.obolibrary.org/obo/trans.owl
+
+# The Human Phenotype Ontology
+# http://www.human-phenotype-ontology.org
+http://purl.obolibrary.org/obo/hp.owl
+
+# Phenotype And Trait Ontology (PATO)
+# http://obofoundry.org/ontology/pato.html
+http://purl.obolibrary.org/obo/pato.owl
+
+# PDBx ontology
+# https://pdbj.org/
+http://rdf.wwpdb.org/schema/pdbx-v50.owl
+
+# Units of Measurement Ontology (UO)
+# https://github.com/bio-ontology-research-group/unit-ontology
+http://purl.obolibrary.org/obo/uo.owl
+
+# Quantities, Units, Dimensions and Types Ontology (QUDT)
+# http://qudt.org
+http://qudt.org/2.1/schema/qudt.ttl
+http://qudt.org/2.1/vocab/unit.ttl
+http://qudt.org/2.1/vocab/prefix.ttl
+http://qudt.org/2.1/vocab/quantitykind.ttl
+http://qudt.org/2.1/vocab/sou.ttl
+http://qudt.org/2.1/vocab/dimensionvector.ttl
+
+# Open PHACTS Units extending QUDT
+# http://www.openphacts.org/specs/units/
+https://raw.githubusercontent.com/openphacts/jqudt/master/src/main/resources/onto/ops.ttl
+
+# Linked Models: Datatype Ontology (DTYPE)
+# http://www.linkedmodel.org/
+http://www.linkedmodel.org/schema/dtype.ttl
+
+# Linked Models: Vocabulary for Attaching Essential Metadata (VAEM)
+# http://www.linkedmodel.org/
+http://www.linkedmodel.org/schema/vaem.ttl
+
+# Ontology for Biomedical Investigations (OBI)
+# https://github.com/obi-ontology/obi
+http://purl.obolibrary.org/obo/obi.owl
+
+# Chemical Information Ontology (CHEMINF)
+# https://github.com/semanticchemistry/semanticchemistry
+http://semanticchemistry.github.io/semanticchemistry/ontology/cheminf.owl
+http://semanticchemistry.github.io/semanticchemistry/ontology/cdk.owl
+http://semanticchemistry.github.io/semanticchemistry/ontology/cheminf-algorithms.owl
+http://semanticchemistry.github.io/semanticchemistry/ontology/cheminf-core.owl
+http://semanticchemistry.github.io/semanticchemistry/ontology/cheminf-external.owl
+
+# Semanticscience integrated ontology (SIO)
+# https://github.com/MaastrichtU-IDS/semanticscience
+http://semanticscience.org/ontology/sio.owl
+
+# Information Artifact Ontology (IAO)
+# https://github.com/information-artifact-ontology/IAO/
+http://purl.obolibrary.org/obo/iao.owl
+
+# Uber-anatomy Ontology (UBERON)
+# http://uberon.github.io/
+http://purl.obolibrary.org/obo/uberon.owl
+
+# NCBI Organismal Classification
+# https://www.ncbi.nlm.nih.gov/taxonomy
+http://purl.obolibrary.org/obo/ncbitaxon.owl
+
+# National Drug File-Reference Terminology (NDF-RT)
+# https://www.oit.va.gov/Services/TRM/StandardPage.aspx?tid=5221
+https://data.bioontology.org/ontologies/NDF-RT/submissions/1/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb
+
+# National Center Institute Thesaurus (NCIt)
+# http://ncit.nci.nih.gov/
+https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.OWL.zip
+
+# National Center Institute Thesaurus (OBO Edition)
+# https://github.com/NCI-Thesaurus/thesaurus-obo-edition
+http://purl.obolibrary.org/obo/ncit.owl
+
+# OBO Relations Ontology
+# https://github.com/oborel/obo-relations
+http://purl.obolibrary.org/obo/ro.owl
+http://purl.obolibrary.org/obo/ro/annotations.owl
+http://purl.obolibrary.org/obo/ro/core.owl
+http://purl.obolibrary.org/obo/ro/el-constraints.owl
+http://purl.obolibrary.org/obo/ro/generated-axioms.owl
+http://purl.obolibrary.org/obo/ro/go-biotic.owl
+http://purl.obolibrary.org/obo/ro/go_cc_import.owl
+http://purl.obolibrary.org/obo/ro/go_mf_import.owl
+http://purl.obolibrary.org/obo/ro/other_import.owl
+http://purl.obolibrary.org/obo/ro/rohom.owl
+http://purl.obolibrary.org/obo/ro/temporal-intervals.owl
+http://purl.obolibrary.org/obo/ro/bfo-axioms.owl
+http://purl.obolibrary.org/obo/ro/bfo-classes-minimal.owl
+
+# Basic Formal Ontology (BFO)
+# https://basic-formal-ontology.org/
+https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2014-05-03/owl-group/bfo.owl
+
+# Experimental Factor Ontology (EFO)
+# https://www.ebi.ac.uk/efo/
+http://www.ebi.ac.uk/efo/efo.owl
+
+# Eagle-i Resource Ontology (ERO)
+# https://www.eagle-i.net/
+http://purl.obolibrary.org/obo/ero.owl
+
+# Citation Typing Ontology (CiTO)
+# https://sparontologies.github.io/cito/current/cito.html
+http://purl.org/spar/cito.xml
+
+# FRBR-aligned Bibliographic Ontology (FaBiO)
+# https://sparontologies.github.io/fabio/current/fabio.html
+http://purl.org/spar/fabio.xml
+
+# Dublin Core Metadata Initiative Terms (DCMI)
+# https://dublincore.org/specifications/dublin-core/dcmi-terms/
+https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf
+
+# Simple Knowledge Organization System (SKOS)
+# https://www.w3.org/2009/08/skos-reference/skos.html
+http://www.w3.org/TR/skos-reference/skos.rdf
+
+# Food Ontology
+# http://foodon.org
+http://purl.obolibrary.org/obo/foodon.owl
+http://purl.obolibrary.org/obo/foodon/imports/deprecation_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/envo_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/foodon_product_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/gaz_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/geem_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/general_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/metadata_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/product_type_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/robot_organismal_materials.owl
+http://purl.obolibrary.org/obo/foodon/imports/robot_pasta.owl
+http://purl.obolibrary.org/obo/foodon/imports/robot_process_import.owl
+http://purl.obolibrary.org/obo/foodon/imports/robot_wine.owl
+http://purl.obolibrary.org/obo/foodon/imports/siren_augment_codes.owl
+
+# Evidence & Conclusion Ontology (ECO)
+# http://evidenceontology.org/
+http://purl.obolibrary.org/obo/eco.owl
+
+# Essential FRBR in OWL2 DL Ontology (FRBR)
+# https://sparontologies.github.io/frbr/current/frbr.html
+http://purl.org/spar/frbr.xml
+
+# Description of a Project (DOAP) vocabulary
+# https://github.com/ewilderj/doap/wiki
+https://raw.githubusercontent.com/ewilderj/doap/master/schema/doap.rdf
+
+# FOAF Vocabulary
+# http://xmlns.com/foaf/spec/
+http://xmlns.com/foaf/spec/index.rdf
+
+# Provenance, Authoring and Versioning (PAV)
+# http://pav-ontology.github.io/pav/
+http://pav-ontology.github.io/pav/pav.rdf
+
+# SemWeb Vocab Status Ontology
+# https://www.w3.org/2003/06/sw-vocab-status/note.html
+http://www.w3.org/2003/06/sw-vocab-status/ns.rdf
+
+# Vocabulary of Interlinked Datasets (VoID)
+# http://vocab.deri.ie/void.html
+http://vocab.deri.ie/void.rdf
+
+# RDF Schema (RDFS)
+# https://www.w3.org/TR/rdf-schema/
+http://www.w3.org/2000/01/rdf-schema.rdf
+https://www.w3.org/1999/02/22-rdf-syntax-ns.rdf
+
+# OWL 2 Schema (OWL 2)
+# https://www.w3.org/TR/owl2-overview/
+https://www.w3.org/2002/07/owl.rdf
