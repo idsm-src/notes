@@ -1,4 +1,4 @@
-psql -U postgres -d postgres << EOF
+psql -U postgres -d postgres << 'EOF'
 alter system set max_connections = '300';
 alter system set shared_buffers = '500GB';
 alter system set effective_cache_size = '1500GB';
@@ -18,18 +18,18 @@ alter system set max_parallel_maintenance_workers = '64';
 EOF
 
 
-psql -U postgres -d postgres << EOF
+psql -U postgres -d postgres << 'EOF'
 create role sparql with login;
-\\password sparql
+\password sparql
 
 create role idsm with login;
-\\password idsm
+\password idsm
 create database idsm owner idsm;
 EOF
 
 
 # pgsparql
-psql -U idsm -d idsm << EOF
+psql -U idsm -d idsm << 'EOF'
 create schema uuid;
 create schema pgcrypto;
 create schema sparql;
@@ -39,7 +39,7 @@ grant usage on schema pgcrypto to sparql;
 grant usage on schema sparql to sparql;
 EOF
 
-psql -U postgres -d idsm << EOF
+psql -U postgres -d idsm << 'EOF'
 create extension "uuid-ossp" with schema uuid;
 create extension pgcrypto with schema pgcrypto;
 create extension pgsparql;
@@ -50,11 +50,11 @@ EOF
 
 
 # sachem
-psql -U idsm -d idsm << EOF
+psql -U idsm -d idsm << 'EOF'
 create schema sachem;
 grant usage on schema sachem to sparql;
 EOF
 
-psql -U postgres -d idsm << EOF
+psql -U postgres -d idsm << 'EOF'
 create extension sachem;
 EOF

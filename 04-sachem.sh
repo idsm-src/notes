@@ -1,4 +1,4 @@
-psql -U idsm -d idsm << EOF
+psql -U idsm -d idsm << 'EOF'
 create schema molecules;
 grant usage on schema molecules to sparql;
 
