@@ -40,7 +40,7 @@ TABLES="\
 
 psql -U idsm -d idsm -c "create schema chembl"
 
-tar xz -f ../data/chembl/chembl_28_postgresql.tar.gz --to-stdout chembl_28/chembl_28_postgresql/chembl_28_postgresql.dmp | pg_restore --no-owner --no-comments -f - $TABLES | sed '1,/-- Data for Name:/s#public#chembl#g' | psql -a -U idsm -d idsm 2>&1 | tee chembl-load.log
+tar xz -f ../data/chembl/chembl_29_postgresql.tar.gz --to-stdout chembl_29_postgresql/chembl_29_postgresql.dmp | pg_restore --no-owner --no-comments -f - $TABLES | sed -e '1,/-- Data for Name:/s#public#chembl#g' -e 's#^COPY public\.#COPY chembl.#' | psql -a -U idsm -d idsm -v ON_ERROR_STOP=1 2>&1 | tee chembl-load.log
 
 cat sql/chembl/schema/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-schema.log
 

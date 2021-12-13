@@ -8,7 +8,7 @@ wget -P chebi ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl
 # ChEML
 wget -P chembl ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/chembl_28_postgresql.tar.gz
 wget -r -A ttl.gz -P chembl/rdf -nH --cut-dirs=5 ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/28.0/
-tar xz -f chembl/chembl_28_postgresql.tar.gz --to-stdout chembl_28/chembl_28_postgresql/chembl_28_postgresql.dmp | pg_restore --no-owner --no-comments -f - -t assays | grep "^[0-9].*CHEMBL" | cut -d $'\t' -f 1,19 > chembl/assay-mapping.txt
+tar xz -f chembl/chembl_29_postgresql.tar.gz --to-stdout chembl_29_postgresql/chembl_29_postgresql.dmp | pg_restore --no-owner --no-comments -f - -t assays | grep "^[0-9].*CHEMBL" | cut -d $'\t' -f 1,19 > chembl/assay-mapping.txt
 
 
 # pubchem
