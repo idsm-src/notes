@@ -14,10 +14,14 @@ select sachem.add_index('chembl', 'molecules', 'chembl', 'id', 'molfile', 16, 16
 create table molecules.pubchem (id int not null, molfile text not null, primary key(id));
 select sachem.add_index('pubchem', 'molecules', 'pubchem', 'id', 'molfile', 32, 32, 100000, 0);
 
+create table molecules.wikidata (id int not null, smiles text not null, primary key(id));
+select sachem.add_index('wikidata', 'molecules', 'wikidata', 'id', 'smiles', 16, 16, 100000, 0);
+
 grant select on table molecules.drugbank to sparql;
 grant select on table molecules.chebi to sparql;
 grant select on table molecules.chembl to sparql;
 grant select on table molecules.pubchem to sparql;
+grant select on table molecules.wikidata to sparql;
 
 create function sachem.substructure_search_stub(varchar, varchar, sachem.search_mode = 'SUBSTRUCTURE', sachem.charge_mode = 'DEFAULT_AS_ANY', sachem.isotope_mode = 'IGNORE', sachem.radical_mode = 'DEFAULT_AS_ANY', sachem.stereo_mode = 'IGNORE', sachem.aromaticity_mode = 'AUTO', sachem.tautomer_mode = 'IGNORE', sachem.query_format = 'UNSPECIFIED', numeric = -1, boolean = false, numeric = 0) RETURNS TABLE (compound int, score float8) AS
 $$
