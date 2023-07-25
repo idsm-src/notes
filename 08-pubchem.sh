@@ -1,8 +1,12 @@
 # run in the loader directory
 
+bin/download-pubchem.sh data/pubchem
+
+cat sql/pubchem/base.sql | psql -b -U idsm -d idsm 2>&1 | tee pubchem-base.log
+
 cat sql/pubchem/schema/*.sql | psql -b -U idsm -d idsm 2>&1 | tee pubchem-schema.log
 
-java -Xmx512g -Djava.util.concurrent.ForkJoinPool.common.parallelism=32 -classpath bin:$(echo $(ls -1 lib/*) | sed 's| |:|g') cz.iocb.load.pubchem.PubChemRDF 2>&1 | tee pubchem-load.log
+java -Xmx1024g -Djava.util.concurrent.ForkJoinPool.common.parallelism=32 -classpath 'classes:lib/*' cz.iocb.load.pubchem.PubChemRDF 2>&1 | tee pubchem-load.log
 
 cat sql/pubchem/settings/*.sql | psql -b -U idsm -d idsm 2>&1 | tee pubchem-settings.log
 

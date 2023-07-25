@@ -38,13 +38,15 @@ TABLES="\
 -t target_relations";
 
 
-psql -U idsm -d idsm -c "create schema chembl"
+bin/download-chembl.sh data/chembl
 
-tar xz -f ../data/chembl/chembl_31_postgresql.tar.gz --to-stdout chembl_31/chembl_31_postgresql/chembl_31_postgresql.dmp | pg_restore --no-owner --no-comments -f - $TABLES | sed -e '1,/-- Data for Name:/s#public#chembl#g' -e 's#^COPY public\.#COPY chembl.#' | psql -a -U idsm -d idsm -v ON_ERROR_STOP=1 2>&1 | tee chembl-load.log
+cat sql/chembl/base.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-base.log
+
+tar xz -f data/chembl/chembl_*_postgresql.tar.gz --to-stdout --wildcards 'chembl_*_postgresql.dmp' | pg_restore --no-owner --no-comments -f - $TABLES | sed -e '1,/-- Data for Name:/s#public#chembl_tmp#g' -e 's#^COPY public\.#COPY chembl_tmp.#' | psql -a -U idsm -d idsm -v ON_ERROR_STOP=1 2>&1 | tee chembl-load.log
 
 cat sql/chembl/schema/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-schema.log
 
-java -Xmx256g -classpath bin:$(echo $(ls -1 lib/*) | sed 's| |:|g') cz.iocb.load.chembl.ChEMBL 2>&1 | tee chembl-load-additional.log
+java -Xmx256g -classpath 'classes:lib/*' cz.iocb.load.chembl.ChEMBL 2>&1 | tee chembl-load-additional.log
 
 cat sql/chembl/settings/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-settings.log
 
