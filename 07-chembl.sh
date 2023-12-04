@@ -40,16 +40,20 @@ TABLES="\
 
 bin/download-chembl.sh data/chembl
 
+echo "create schema if not exists chembl;" | psql -b -U idsm -d idsm
+
 cat sql/chembl/base.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-base.log
 
 tar xz -f data/chembl/chembl_*_postgresql.tar.gz --to-stdout --wildcards 'chembl_*_postgresql.dmp' | pg_restore --no-owner --no-comments -f - $TABLES | sed -e '1,/-- Data for Name:/s#public#chembl_tmp#g' -e 's#^COPY public\.#COPY chembl_tmp.#' | psql -a -U idsm -d idsm -v ON_ERROR_STOP=1 2>&1 | tee chembl-load.log
 
 cat sql/chembl/schema/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-schema.log
 
-java -Xmx256g -classpath 'classes:lib/*' cz.iocb.load.chembl.ChEMBL 2>&1 | tee chembl-load-additional.log
-
 cat sql/chembl/settings/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-settings.log
 
 cat sql/chembl/functions/*.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-functions.log
 
 cat sql/chembl/foreignkey.sql | psql -b -U idsm -d idsm 2>&1 | tee chembl-foreignkey.log
+
+java -Xmx256g -classpath 'classes:lib/*' cz.iocb.load.chembl.ChEMBL 2>&1 | tee chembl-load-additional.log
+
+echo "drop schema chembl_old cascade;" | psql -b -U idsm -d idsm

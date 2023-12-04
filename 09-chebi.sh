@@ -2,7 +2,7 @@
 
 wget -P data/chebi ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl
 
-cat sql/chebi/base.sql | psql -b -U idsm -d idsm 2>&1 | tee chebi-foreignkey.log
+cat sql/chebi/base.sql | psql -b -U idsm -d idsm 2>&1 | tee chebi-base.log
 
 cat sql/chebi/schema.sql | psql -b -U idsm -d idsm 2>&1 | tee chebi-schema.log
 

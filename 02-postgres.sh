@@ -1,7 +1,7 @@
 psql -U postgres -d postgres << 'EOF'
 alter system set max_connections = '300';
-alter system set shared_buffers = '500GB';
-alter system set effective_cache_size = '1500GB';
+alter system set shared_buffers = '512GB';
+alter system set effective_cache_size = '1536GB';
 alter system set maintenance_work_mem = '2GB';
 alter system set checkpoint_completion_target = '0.9';
 alter system set wal_buffers = '16MB';
@@ -28,33 +28,24 @@ create database idsm owner idsm;
 EOF
 
 
-# pgsparql
 psql -U idsm -d idsm << 'EOF'
+create schema trgm;
 create schema uuid;
 create schema pgcrypto;
 create schema sparql;
+create schema sachem;
 
+grant usage on schema trgm to sparql;
 grant usage on schema uuid to sparql;
 grant usage on schema pgcrypto to sparql;
 grant usage on schema sparql to sparql;
-EOF
-
-psql -U postgres -d idsm << 'EOF'
-create extension "uuid-ossp" with schema uuid;
-create extension pgcrypto with schema pgcrypto;
-create extension pgsparql;
-
-alter user idsm set search_path to uuid, pgcrypto;
-alter user sparql set search_path to uuid, pgcrypto;
-EOF
-
-
-# sachem
-psql -U idsm -d idsm << 'EOF'
-create schema sachem;
 grant usage on schema sachem to sparql;
 EOF
 
 psql -U postgres -d idsm << 'EOF'
-create extension sachem;
+create extension "pg_trgm" with schema trgm;
+create extension "uuid-ossp" with schema uuid;
+create extension "pgcrypto" with schema pgcrypto;
+create extension "pgsparql";
+create extension "sachem";
 EOF

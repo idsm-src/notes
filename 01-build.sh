@@ -3,8 +3,8 @@ git clone https://bioinfo.uochb.cas.cz/gitlab/chemdb/pgsparql.git
 git clone https://bioinfo.uochb.cas.cz/gitlab/chemdb/chemweb.git
 git clone https://bioinfo.uochb.cas.cz/gitlab/chemdb/loaders.git
 
-wget https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zip
-unzip gwt-2.9.0.zip
+https://github.com/gwtproject/gwt/releases/download/2.10.0/gwt-2.10.0.zip
+unzip gwt-2.10.0.zip
 
 
 # run in the sachem directory
@@ -12,9 +12,6 @@ autoreconf -i
 ./configure
 make
 sudo make install
-
-mkdir ~/.sachem
-cp -r doc/config/* ~/.sachem # + set parameters
 
 
 # run in the pgsparql directory
@@ -30,5 +27,5 @@ ant
 
 
 # run in the loaders directory
-cp datasource.tmpl.properties datasource.properties # + set parameters
+cp config/datasource.tmpl.properties config/datasource.properties # + set parameters
 ant
