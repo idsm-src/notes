@@ -34,12 +34,14 @@ create schema uuid;
 create schema pgcrypto;
 create schema sparql;
 create schema sachem;
+create schema pgms;
 
 grant usage on schema trgm to sparql;
 grant usage on schema uuid to sparql;
 grant usage on schema pgcrypto to sparql;
 grant usage on schema sparql to sparql;
 grant usage on schema sachem to sparql;
+grant usage on schema pgms to sparql;
 EOF
 
 psql -U postgres -d idsm << 'EOF'
@@ -48,4 +50,5 @@ create extension "uuid-ossp" with schema uuid;
 create extension "pgcrypto" with schema pgcrypto;
 create extension "pgsparql";
 create extension "sachem";
+create extension "pgms";
 EOF
