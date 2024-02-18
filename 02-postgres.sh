@@ -42,9 +42,7 @@ grant usage on schema pgcrypto to sparql;
 grant usage on schema sparql to sparql;
 grant usage on schema sachem to sparql;
 grant usage on schema pgms to sparql;
-EOF
 
-psql -U postgres -d idsm << 'EOF'
 create extension "pg_trgm" with schema trgm;
 create extension "uuid-ossp" with schema uuid;
 create extension "pgcrypto" with schema pgcrypto;
