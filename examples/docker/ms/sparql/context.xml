@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource name="jdbc:ms" auth="Container"
+      factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" closeMethod="close"
+      type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+      url="jdbc:postgresql://msdb:5432/ms" username="sparql" password="sparqlopenpassword"
+      initialSize="5" maxActive="5" maxIdle="5" minIdle="5"
+      maxWait="-1" testOnBorrow="true" validationQuery="SELECT 1"
+      testWhileIdle="false" removeAbandoned="false" timeBetweenEvictionRunsMillis="0" />
+  <Resource name="sparql:ms" auth="Container"
+      type="cz.iocb.chemweb.server.sparql.config.MSConfiguration"
+      factory="cz.iocb.chemweb.server.sparql.config.SparqlDatabaseConfigurationFactory"
+      datasource="jdbc:ms" singleton="true" />
+</Context>
