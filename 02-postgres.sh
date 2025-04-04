@@ -1,20 +1,21 @@
 psql -U postgres -d postgres << 'EOF'
-alter system set max_connections = '300';
+alter system set max_connections = '500';
 alter system set shared_buffers = '512GB';
 alter system set effective_cache_size = '1536GB';
 alter system set maintenance_work_mem = '2GB';
 alter system set checkpoint_completion_target = '0.9';
 alter system set wal_buffers = '16MB';
 alter system set default_statistics_target = '500';
-alter system set random_page_cost = '1.1';
+alter system set seq_page_cost = '0.5';
+alter system set random_page_cost = '0.55';
 alter system set effective_io_concurrency = '200';
 alter system set work_mem = '1GB';
 alter system set min_wal_size = '4GB';
 alter system set max_wal_size = '32GB';
-alter system set max_worker_processes = '128';
-alter system set max_parallel_workers_per_gather = '64';
-alter system set max_parallel_workers = '128';
-alter system set max_parallel_maintenance_workers = '64';
+alter system set max_worker_processes = '64';
+alter system set max_parallel_workers_per_gather = '32';
+alter system set max_parallel_workers = '64';
+alter system set max_parallel_maintenance_workers = '32';
 EOF
 
 
