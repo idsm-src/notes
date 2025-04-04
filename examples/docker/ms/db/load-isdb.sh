@@ -1,12 +1,7 @@
 #!/bin/bash
 set -e
 
-BASE=$(mktemp -d)
-cd ${BASE}
+cd /opt/server/loaders
 
-wget https://zenodo.org/records/8287341/files/isdb_neg.mgf
-wget https://zenodo.org/records/8287341/files/isdb_pos.mgf
-
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/load.sql
-
-echo "done"
+mvn exec:exec@isdb-download
+mvn exec:exec@isdb-load

@@ -4,7 +4,7 @@
          version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
   <servlet>
     <servlet-name>EndpointServlet</servlet-name>
-    <servlet-class>cz.iocb.chemweb.server.servlets.endpoint.EndpointServlet</servlet-class>
+    <servlet-class>cz.iocb.sparql.endpoint.EndpointServlet</servlet-class>
     <init-param><param-name>resource</param-name><param-value>sparql:ms</param-value></init-param>
   </servlet>
   <servlet-mapping>

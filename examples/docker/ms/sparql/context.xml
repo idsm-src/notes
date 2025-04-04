@@ -9,6 +9,6 @@
       testWhileIdle="false" removeAbandoned="false" timeBetweenEvictionRunsMillis="0" />
   <Resource name="sparql:ms" auth="Container"
       type="cz.iocb.chemweb.server.sparql.config.MSConfiguration"
-      factory="cz.iocb.chemweb.server.sparql.config.SparqlDatabaseConfigurationFactory"
+      factory="cz.iocb.sparql.endpoint.SparqlDatabaseConfigurationFactory"
       datasource="jdbc:ms" singleton="true" />
 </Context>

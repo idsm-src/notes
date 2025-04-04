@@ -28,8 +28,8 @@ create extension "sachem";
 create extension "pgms";
 
 alter system set max_connections = '20';
-alter system set shared_buffers = '16GB';
-alter system set effective_cache_size = '48GB';
+alter system set shared_buffers = '8GB';
+alter system set effective_cache_size = '24GB';
 alter system set maintenance_work_mem = '2GB';
 alter system set wal_buffers = '16MB';
 alter system set default_statistics_target = '500';
@@ -43,30 +43,33 @@ alter system set max_parallel_maintenance_workers = '$NPROC';
 EOF
 
 
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/sachem/procedures.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/sachem/procedures.sql
 
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/ontology/base.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/ontology/schema.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/ontology/settings.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/ontology/functions.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/ontology/foreignkey.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/ontology/base.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/ontology/schema.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/ontology/settings.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/ontology/functions.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/ontology/foreignkey.sql
 
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/mona/base.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/mona/schema.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/mona/settings.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/mona/foreignkey.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/mona/sachem.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/mona/base.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/mona/schema.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/mona/settings.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/mona/foreignkey.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/mona/sachem.sql
 
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/base.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/schema.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/settings.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/foreignkey.sql
-psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/loaders/sql/isdb/sachem.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/isdb/base.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/isdb/schema.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/isdb/settings.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/isdb/foreignkey.sql
+psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" < /opt/server/loaders/src/main/sql/isdb/sachem.sql
 
 
 psql --echo-all --set ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" << 'EOF'
 select sachem.sync_data('mona');
 select sachem.sync_data('isdb');
+
+drop function sachem.substructure_search_all;
+drop function sachem.similarity_search_all;
 
 create function sachem.substructure_search_all(varchar, sachem.search_mode = 'SUBSTRUCTURE', sachem.charge_mode = 'DEFAULT_AS_ANY', sachem.isotope_mode = 'IGNORE', sachem.radical_mode = 'DEFAULT_AS_ANY', sachem.stereo_mode = 'IGNORE', sachem.aromaticity_mode = 'AUTO', sachem.tautomer_mode = 'IGNORE', varchar = 'UNSPECIFIED', numeric = -1, boolean = false, numeric = 0) returns table (score float8, mona integer, isdb integer) language sql as
 $$
@@ -80,12 +83,13 @@ $$
 $$
 immutable parallel safe strict;
 
-create table mona.compound_pubchem_compounds(compound integer, cid integer);
+
+create materialized view mona.compound_pubchem_compounds as select NULL::integer as compound, NULL::integer as cid where false;
 grant select on mona.compound_pubchem_compounds to sparql;
 
-create table isdb.compound_pubchem_compounds(compound integer, cid integer);
+create materialized view isdb.compound_pubchem_compounds as select NULL::integer as compound, NULL::integer as cid where false;
 grant select on isdb.compound_pubchem_compounds to sparql;
 
-create table isdb.compound_wikidata_compounds(compound integer, wikidata integer);
+create materialized view isdb.compound_wikidata_compounds as select NULL::integer as compound, NULL::integer as wikidata where false;
 grant select on isdb.compound_wikidata_compounds to sparql;
 EOF

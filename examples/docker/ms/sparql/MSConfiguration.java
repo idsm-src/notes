@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
-import cz.iocb.chemweb.server.sparql.config.SparqlDatabaseConfiguration;
 import cz.iocb.chemweb.server.sparql.config.isdb.IsdbConfiguration;
 import cz.iocb.chemweb.server.sparql.config.mona.MonaConfiguration;
 import cz.iocb.chemweb.server.sparql.config.sachem.Sachem;
-import cz.iocb.chemweb.server.sparql.database.Column;
-import cz.iocb.chemweb.server.sparql.database.DatabaseSchema;
-import cz.iocb.chemweb.server.sparql.database.TableColumn;
-import cz.iocb.chemweb.server.sparql.mapping.classes.ResourceClass;
+import cz.iocb.sparql.engine.config.SparqlDatabaseConfiguration;
+import cz.iocb.sparql.engine.database.Column;
+import cz.iocb.sparql.engine.database.DatabaseSchema;
+import cz.iocb.sparql.engine.database.TableColumn;
+import cz.iocb.sparql.engine.mapping.classes.ResourceClass;
 
 
 
